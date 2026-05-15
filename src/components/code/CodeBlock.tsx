@@ -30,25 +30,22 @@ export function CodeBlock({ code, language, expectedEntries }: CodeBlockProps) {
   }
 
   return (
-    <div className="relative">
-      <div className="mb-2 flex items-center justify-between text-xs text-[var(--color-muted-fg)]">
-        <span>{LANGUAGE_LABELS[language]}</span>
-        <span>Expected entries per matrix: {expectedEntries}</span>
+    <div>
+      {/* Meta row above the code — the Copy button lives here so it can't
+       *  overlap long syntax lines inside the <pre>. */}
+      <div className="mb-2 flex flex-wrap items-center justify-between gap-x-3 gap-y-1.5 text-xs text-[var(--color-muted-fg)]">
+        <span className="min-w-0">{LANGUAGE_LABELS[language]}</span>
+        <div className="flex shrink-0 items-center gap-3">
+          <span className="tabular-nums">Expected entries per matrix: {expectedEntries}</span>
+          <Button variant="ghost" size="sm" onClick={copy} className="h-7 gap-1.5">
+            {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
+            {copied ? 'Copied' : 'Copy'}
+          </Button>
+        </div>
       </div>
-      <div className="relative">
-        <pre className="overflow-x-auto rounded-md bg-[var(--color-muted)] p-4 font-mono text-xs leading-relaxed">
-          <code>{code}</code>
-        </pre>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={copy}
-          className="absolute right-2 top-2 h-7 gap-1.5 bg-[var(--color-card)]/80"
-        >
-          {copied ? <Check className="h-3.5 w-3.5" /> : <Copy className="h-3.5 w-3.5" />}
-          {copied ? 'Copied' : 'Copy'}
-        </Button>
-      </div>
+      <pre className="overflow-x-auto rounded-md bg-[var(--color-muted)] p-4 font-mono text-xs leading-relaxed">
+        <code>{code}</code>
+      </pre>
     </div>
   )
 }

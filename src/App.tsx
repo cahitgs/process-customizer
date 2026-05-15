@@ -55,24 +55,21 @@ function App() {
           </main>
           <footer className="mx-auto max-w-7xl px-6 pb-10 pt-4">
             <div className="rule-accent mb-5" />
-            <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
-              <p className="max-w-[60ch] text-[0.72rem] leading-relaxed text-[var(--color-muted-fg)]">
-                Built against Hayes (2022){' '}
-                <span className="display-italic">
-                  Introduction to Mediation, Moderation, and Conditional Process Analysis
-                </span>
-                , 3rd ed., Appendices A &amp; B. The PROCESS macro is the work of Andrew F. Hayes.
-              </p>
-              <div className="flex flex-col gap-1 text-[0.72rem] text-[var(--color-muted-fg)] sm:items-end">
-                <p className="kicker !text-[0.6rem]">Analysis &amp; Contact</p>
-                <a
-                  href="mailto:cahitgs@gmail.com"
-                  className="font-mono text-[var(--color-fg)] underline decoration-[var(--color-accent-line)] decoration-1 underline-offset-4 transition-colors hover:text-[var(--color-accent)]"
-                >
-                  cahitgs@gmail.com
-                </a>
-              </div>
-            </div>
+            <p className="max-w-[68ch] text-[0.72rem] leading-relaxed text-[var(--color-muted-fg)]">
+              Built against Hayes (2022){' '}
+              <span className="display-italic">
+                Introduction to Mediation, Moderation, and Conditional Process Analysis
+              </span>
+              , 3rd ed., Appendices A &amp; B. The PROCESS macro is the work of Andrew F. Hayes.
+              Issues &amp; suggestions:{' '}
+              <a
+                href="mailto:cahitgs@gmail.com?subject=PROCESS%20Customizer%20%E2%80%94%20issues%20%26%20feedback"
+                className="font-mono text-[var(--color-fg)] underline decoration-[var(--color-accent-line)] decoration-1 underline-offset-4 transition-colors hover:text-[var(--color-accent)]"
+              >
+                cahitgs@gmail.com
+              </a>
+              .
+            </p>
           </footer>
         </div>
       </div>

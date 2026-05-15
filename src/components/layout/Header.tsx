@@ -1,4 +1,4 @@
-import { ExternalLink, RotateCcw } from 'lucide-react'
+import { ExternalLink, Mail, RotateCcw } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { ThemeToggle } from './ThemeToggle'
 import { useModelStore } from '@/store/modelStore'
@@ -78,6 +78,16 @@ export function Header() {
               <RotateCcw className="h-3.5 w-3.5" />
               Reset
             </Button>
+            {/* Feedback / issues — mailto opens user's mail client with subject
+             *  pre-filled. On narrow viewports only the icon is shown. */}
+            <a
+              href="mailto:cahitgs@gmail.com?subject=PROCESS%20Customizer%20%E2%80%94%20issues%20%26%20feedback"
+              className="inline-flex h-8 items-center gap-1.5 rounded-md px-3 text-xs font-medium text-[var(--color-muted-fg)] transition-colors hover:bg-[var(--color-muted)] hover:text-[var(--color-accent)]"
+              title="Issues & suggestions — cahitgs@gmail.com"
+            >
+              <Mail className="h-3.5 w-3.5" />
+              <span className="hidden font-mono sm:inline">cahitgs@gmail.com</span>
+            </a>
             <a
               href="https://www.processmacro.org/"
               target="_blank"
