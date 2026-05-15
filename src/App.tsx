@@ -16,7 +16,7 @@ function App() {
           <Header />
           {/* Editorial hero — sets the tone before the working surfaces */}
           <section className="mx-auto max-w-7xl px-6 pb-2 pt-10">
-            <p className="kicker mb-3">Vol. 2 · Appendix B · Hayes 2022</p>
+            <p className="kicker mb-3">Matrices to model commands</p>
             <h2
               className="max-w-[18ch] font-serif text-[2rem] leading-[1.05] tracking-[-0.02em] text-[var(--color-fg)] sm:max-w-[22ch] sm:text-[2.75rem] lg:max-w-[28ch] lg:text-[3.25rem]"
               style={{ fontVariationSettings: '"opsz" 144, "SOFT" 30, "WONK" 0' }}
