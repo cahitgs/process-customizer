@@ -1,0 +1,316 @@
+@import 'tailwindcss';
+@import '@xyflow/react/dist/style.css';
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ═════════════════════════════════════════════════════════════════════════
+ *  Design system — "Editorial Statistician"
+ *
+ *  An academic-journal-meets-modern-tool aesthetic. Cream paper surfaces, deep
+ *  espresso ink, an oxblood accent (the color of bookbinding leather), and
+ *  Fraunces — a variable serif with optical sizing and a 'wonk' axis — paired
+ *  with Geist for body text and IBM Plex Mono for code.
+ *
+ *  Rationale: the tool serves researchers reading Hayes (2018). It deserves
+ *  the typographic seriousness of the book itself, not generic SaaS chrome.
+ * ════════════════════════════════════════════════════════════════════════ */
+@theme {
+  --font-serif: 'Fraunces', ui-serif, Georgia, 'Times New Roman', serif;
+  --font-sans: 'Geist', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --font-mono:
+    'IBM Plex Mono', ui-monospace, 'JetBrains Mono', 'SF Mono', Consolas,
+    monospace;
+
+  /* ── Surfaces — cream paper ──────────────────────────────────────────── */
+  --color-bg: oklch(96.5% 0.018 75);
+  --color-fg: oklch(20% 0.025 30);
+  --color-muted: oklch(93% 0.022 75);
+  --color-muted-fg: oklch(45% 0.028 30);
+  --color-border: oklch(82% 0.028 65);
+  --color-border-strong: oklch(60% 0.04 30);
+  --color-card: oklch(98.5% 0.012 75);
+  --color-card-fg: oklch(20% 0.025 30);
+  --color-elevated: oklch(99% 0.008 75);
+  --color-paper: oklch(91% 0.028 75);
+
+  /* ── Accent — deep oxblood / bookbinding leather ─────────────────────── */
+  --color-accent: oklch(40% 0.13 25);
+  --color-accent-fg: oklch(97% 0.018 75);
+  --color-accent-soft: oklch(88% 0.06 25);
+  --color-accent-line: oklch(40% 0.13 25 / 0.6);
+
+  /* ── Semantic ────────────────────────────────────────────────────────── */
+  --color-success: oklch(45% 0.13 145); /* forest */
+  --color-warning: oklch(58% 0.16 60);  /* burnt amber */
+  --color-danger:  oklch(48% 0.2 25);   /* oxblood deeper */
+
+  /* ── Moderators — distinctive, non-generic tones ─────────────────────── */
+  --color-w: oklch(42% 0.12 215);  /* prussian blue */
+  --color-z: oklch(48% 0.12 100);  /* olive */
+
+  /* ── Radii — smaller, more editorial ─────────────────────────────────── */
+  --radius-md: 0.375rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.625rem;
+
+  /* ── Shadows — soft, paper-like ──────────────────────────────────────── */
+  --shadow-soft:
+    0 1px 2px oklch(30% 0.03 30 / 0.06),
+    0 1px 1px oklch(30% 0.03 30 / 0.04);
+  --shadow-lifted:
+    0 4px 14px oklch(30% 0.03 30 / 0.08),
+    0 2px 4px oklch(30% 0.03 30 / 0.06),
+    0 1px 1px oklch(30% 0.03 30 / 0.04);
+  --shadow-ring: 0 0 0 3px oklch(40% 0.13 25 / 0.18);
+}
+
+.dark {
+  --color-bg: oklch(13% 0.018 30);
+  --color-fg: oklch(94% 0.022 75);
+  --color-muted: oklch(19% 0.022 30);
+  --color-muted-fg: oklch(68% 0.018 30);
+  --color-border: oklch(26% 0.025 30);
+  --color-border-strong: oklch(40% 0.04 30);
+  --color-card: oklch(17% 0.022 30);
+  --color-card-fg: oklch(94% 0.022 75);
+  --color-elevated: oklch(20% 0.022 30);
+  --color-paper: oklch(11% 0.018 30);
+
+  --color-accent: oklch(65% 0.15 25);
+  --color-accent-fg: oklch(13% 0.018 30);
+  --color-accent-soft: oklch(28% 0.08 25);
+  --color-accent-line: oklch(65% 0.15 25 / 0.55);
+
+  --color-success: oklch(65% 0.13 145);
+  --color-warning: oklch(70% 0.16 60);
+  --color-danger: oklch(68% 0.2 25);
+
+  --color-w: oklch(68% 0.13 215);
+  --color-z: oklch(70% 0.13 100);
+
+  --shadow-soft:
+    0 1px 2px oklch(0% 0 0 / 0.4),
+    0 1px 1px oklch(0% 0 0 / 0.3);
+  --shadow-lifted:
+    0 4px 14px oklch(0% 0 0 / 0.5),
+    0 2px 4px oklch(0% 0 0 / 0.4);
+  --shadow-ring: 0 0 0 3px oklch(65% 0.15 25 / 0.3);
+}
+
+@layer base {
+  * {
+    border-color: var(--color-border);
+  }
+
+  html {
+    color-scheme: light dark;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: geometricPrecision;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--color-bg);
+    color: var(--color-fg);
+    font-family: var(--font-sans);
+    font-feature-settings: 'ss03', 'cv11';
+    line-height: 1.55;
+    /* Subtle paper grain — a barely-perceptible noise texture so cream
+     * surfaces have the warmth of actual paper rather than flat color. */
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 50% -5%,
+        oklch(40% 0.13 25 / 0.04),
+        transparent 60%
+      ),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.2  0 0 0 0 0.15  0 0 0 0 0.1  0 0 0 0.035 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+    background-attachment: fixed;
+  }
+
+  .dark body {
+    background-image:
+      radial-gradient(
+        ellipse 80% 50% at 50% -5%,
+        oklch(65% 0.15 25 / 0.06),
+        transparent 60%
+      ),
+      url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 1  0 0 0 0 1  0 0 0 0 1  0 0 0 0.04 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  }
+
+  /* Serif headings — Fraunces variable, soft optical sizing at large sizes. */
+  h1, h2, h3, h4 {
+    font-family: var(--font-serif);
+    font-variation-settings: 'opsz' 144, 'SOFT' 30, 'WONK' 0;
+    letter-spacing: -0.01em;
+  }
+
+  /* Old-style figures for tabular data make matrix cells and code legible
+   * AND distinctive — the kind of numerals you'd see in a printed journal. */
+  code, pre, table td, table th {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Inputs use lining figures so values are unambiguous */
+  input[type='number'], input[type='text'] {
+    font-variant-numeric: lining-nums tabular-nums;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 2px;
+    border-radius: 2px;
+  }
+
+  ::selection {
+    background-color: var(--color-accent-soft);
+    color: var(--color-accent);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 10px;
+    border: 2px solid var(--color-bg);
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-border-strong);
+  }
+}
+
+@layer components {
+  /* Editorial small-caps section label */
+  .kicker {
+    font-family: var(--font-sans);
+    font-size: 0.65rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--color-accent);
+  }
+
+  /* Serif display title in italic — used sparingly for emphasis */
+  .display-italic {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-variation-settings: 'opsz' 144, 'SOFT' 100, 'WONK' 1;
+  }
+
+  /* Hairline rule with the oxblood accent */
+  .rule-accent {
+    height: 1px;
+    background-color: var(--color-accent-line);
+  }
+
+  /* Drop cap — first letter dramatically larger, serif */
+  .drop-cap::first-letter {
+    font-family: var(--font-serif);
+    font-size: 3.4em;
+    line-height: 0.85;
+    float: left;
+    padding-right: 0.08em;
+    padding-top: 0.05em;
+    color: var(--color-accent);
+    font-variation-settings: 'opsz' 144, 'SOFT' 0, 'WONK' 0;
+    font-weight: 700;
+  }
+
+  /* Section ordinal — uses old-style figures */
+  .sec-no {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-variant-numeric: oldstyle-nums;
+    color: var(--color-accent);
+    margin-right: 0.4em;
+  }
+}
+
+@layer utilities {
+  /* Staggered page-load reveal — each card fades up sequentially */
+  @keyframes editorial-rise {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-rise {
+    animation: editorial-rise 0.55s cubic-bezier(0.16, 0.84, 0.44, 1) backwards;
+  }
+  .animate-rise-d1 {
+    animation-delay: 60ms;
+  }
+  .animate-rise-d2 {
+    animation-delay: 120ms;
+  }
+  .animate-rise-d3 {
+    animation-delay: 180ms;
+  }
+  .animate-rise-d4 {
+    animation-delay: 240ms;
+  }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+ *  React Flow theme overrides — editorial
+ * ──────────────────────────────────────────────────────────────────────── */
+.react-flow {
+  background: var(--color-bg);
+}
+
+.react-flow__node {
+  font-family: var(--font-sans);
+  font-weight: 500;
+}
+
+.react-flow__edge-path {
+  stroke-linecap: round;
+}
+
+.react-flow__attribution {
+  display: none;
+}
+
+.react-flow__controls {
+  box-shadow: var(--shadow-lifted);
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  background: var(--color-card);
+  border: 1px solid var(--color-border);
+}
+
+.react-flow__controls-button {
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--color-border);
+  color: var(--color-fg);
+  width: 28px;
+  height: 28px;
+  transition: background 0.15s ease;
+}
+
+.react-flow__controls-button:hover {
+  background: var(--color-muted);
+}
+
+.react-flow__controls-button:last-child {
+  border-bottom: none;
+}
+
+.react-flow__controls-button svg {
+  fill: currentColor;
+  max-width: 14px;
+  max-height: 14px;
+}
+
+.react-flow__background {
+  opacity: 0.4;
+}
