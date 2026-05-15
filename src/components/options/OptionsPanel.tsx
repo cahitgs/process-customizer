@@ -11,7 +11,7 @@ import type { ProcessOptions } from '@/types/model'
 
 /**
  * PROCESS analysis options. Layout and option set verified verbatim against
- * Hayes (2018), Appendix A, pp. 553-554. Defaults match PROCESS itself; an
+ * Hayes (2022), Appendix A, pp. 553-554. Defaults match PROCESS itself; an
  * empty field means PROCESS uses its default and our codegen does not emit
  * the option.
  */
@@ -38,7 +38,7 @@ export function OptionsPanel() {
           <div>
             <CardTitle>Analysis options</CardTitle>
             <CardDescription>
-              PROCESS options per Hayes (2018) Appendix A. Leave blank to use PROCESS defaults.
+              PROCESS options per Hayes (2022) Appendix A. Leave blank to use PROCESS defaults.
             </CardDescription>
           </div>
           <Button

@@ -1,6 +1,6 @@
 # PROCESS Matrix Customizer
 
-A modern, browser-based companion for **Hayes (2018)** _Introduction to Mediation, Moderation, and Conditional Process Analysis_ (2nd ed.). Build and visualize custom PROCESS macro models — the **B / W / Z / WZ / C** matrices described in Appendix B — and export the exact SPSS, SAS, or R command verified against Appendices A & B.
+A modern, browser-based companion for **Hayes (2022)** _Introduction to Mediation, Moderation, and Conditional Process Analysis_ (3rd ed.). Build and visualize custom PROCESS macro models — the **B / W / Z / WZ / C** matrices described in Appendix B — and export the exact SPSS, SAS, or R command verified against Appendices A & B.
 
 ## Features
 
@@ -24,7 +24,7 @@ React 19 · TypeScript · Vite · Tailwind v4 · React Flow 12 · Zustand · Rad
 npm install
 npm run dev      # dev server on http://localhost:5173
 npm run build    # production bundle to dist/
-npm test         # 27 unit tests, fixtures verbatim against Hayes (2018)
+npm test         # 27 unit tests, fixtures verbatim against Hayes (2022)
 ```
 
 ## Project layout
@@ -45,7 +45,9 @@ src/
 
 ## Citation
 
-Hayes, A. F. (2018). _Introduction to Mediation, Moderation, and Conditional Process Analysis: A Regression-Based Approach_ (2nd ed.). The Guilford Press.
+Hayes, A. F. (2022). _Introduction to Mediation, Moderation, and Conditional Process Analysis: A Regression-Based Approach_ (3rd ed.). The Guilford Press.
+
+Page references throughout the source were validated against the 2nd edition (2018); Appendix B in the 3rd edition is substantively identical (per A. F. Hayes, pers. comm., May 2026).
 
 ## Contact
 

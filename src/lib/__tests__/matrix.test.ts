@@ -11,7 +11,7 @@ import {
 } from '../matrix'
 
 describe('matrix utilities', () => {
-  it('entryCount matches Hayes (2018) p. 618 formula 0.5(k+1)(k+2)', () => {
+  it('entryCount matches Hayes (2022) p. 618 formula 0.5(k+1)(k+2)', () => {
     expect(entryCount(0)).toBe(1)
     expect(entryCount(1)).toBe(3)
     expect(entryCount(2)).toBe(6)

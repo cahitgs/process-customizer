@@ -13,7 +13,7 @@ import type { MatrixKind } from '@/types/model'
 const MATRIX_DESCRIPTIONS: Record<MatrixKind, string> = {
   b: 'B: which paths are estimated (1) vs fixed to zero (0). Lower triangle only — the upper triangle is structurally zero (recursive-model constraint).',
   w: 'W: which paths from B are linearly moderated by the W moderator. Cells fixed to zero in B are disabled.',
-  z: 'Z: which paths are moderated by Z. Per Hayes (2018) p. 624, Z requires W.',
+  z: 'Z: which paths are moderated by Z. Per Hayes (2022) p. 624, Z requires W.',
   wz: 'WZ: three-way (moderated moderation) — Z moderates the moderation by W. PROCESS forces W and Z to 1 wherever WZ is 1.',
 }
 
@@ -65,7 +65,7 @@ export function MatricesPanel() {
           {hasCov && (
             <TabsContent value="c">
               <p className="mb-3 text-xs text-[var(--color-muted-fg)]">
-                C: which covariate enters which consequent's equation. Hayes (2018 pp. 630-632).
+                C: which covariate enters which consequent's equation. Hayes (2022 pp. 630-632).
                 Trick on p. 631: copy a moderator (e.g., milkcopy = milk) and zero its row for the
                 consequent that already includes it as a moderator.
               </p>

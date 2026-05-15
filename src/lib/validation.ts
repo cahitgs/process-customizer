@@ -2,7 +2,7 @@ import type { ModelState, ValidationIssue, ValidationResult } from '@/types/mode
 import { hasAnyOne } from './matrix'
 
 /**
- * Validate a model against the rules in Hayes (2018), Appendix B (pp. 618, 624).
+ * Validate a model against the rules in Hayes (2022), Appendix B (pp. 618, 624).
  *
  * - S-1: a path fixed to zero in B cannot be moderated (p. 624)
  * - S-2: if only one moderator is used, it must be W (p. 624)
@@ -44,7 +44,7 @@ export function validate(model: ModelState): ValidationResult {
       severity: 'error',
       code: 'S2_z_without_w',
       message:
-        'Z is used but W is empty. Hayes (2018) p. 624: a single moderator must be W, not Z.',
+        'Z is used but W is empty. Hayes (2022) p. 624: a single moderator must be W, not Z.',
     })
   }
 
@@ -64,7 +64,7 @@ export function validate(model: ModelState): ValidationResult {
       issues.push({
         severity: 'error',
         code: 'S3_variable_no_send',
-        message: `${label} sends no effect — every variable must send at least one effect (Hayes 2018 p. 618).`,
+        message: `${label} sends no effect — every variable must send at least one effect (Hayes 2022 p. 618).`,
       })
     }
   }
@@ -81,7 +81,7 @@ export function validate(model: ModelState): ValidationResult {
       issues.push({
         severity: 'error',
         code: 'S3_variable_no_receive',
-        message: `${label} receives no effect — every variable must receive at least one effect (Hayes 2018 p. 618).`,
+        message: `${label} receives no effect — every variable must receive at least one effect (Hayes 2022 p. 618).`,
       })
     }
   }
@@ -101,7 +101,7 @@ export function validate(model: ModelState): ValidationResult {
       issues.push({
         severity: 'error',
         code: 'S3_dangling_mediator',
-        message: `Mediator "${variables.mediators[m]}" must both send and receive at least one effect (Hayes 2018 p. 618).`,
+        message: `Mediator "${variables.mediators[m]}" must both send and receive at least one effect (Hayes 2022 p. 618).`,
       })
     }
   }
@@ -116,7 +116,7 @@ export function validate(model: ModelState): ValidationResult {
           matrix: 'wz',
           cell: { row: i, col: j },
           message:
-            'WZ = 1 forces W and Z to 1 (Hayes 2018 p. 624). Generated code will reflect this.',
+            'WZ = 1 forces W and Z to 1 (Hayes 2022 p. 624). Generated code will reflect this.',
         })
       }
     }

@@ -15,7 +15,7 @@ export function createMatrix(mediatorCount: number, value = 0): Matrix {
 /**
  * Default B matrix for a fresh model: every recursive path estimated (1 in the
  * lower triangle including the diagonal, 0 in the structurally-impossible upper
- * triangle). This matches the all-1s serial-mediation reading of Hayes (2018)
+ * triangle). This matches the all-1s serial-mediation reading of Hayes (2022)
  * Fig. B.2 panel C with the natural extension to k > 2.
  */
 export function defaultBMatrix(mediatorCount: number): Matrix {
@@ -31,7 +31,7 @@ export function defaultZeroMatrix(mediatorCount: number): Matrix {
 
 /**
  * Whether a cell is editable (lower triangle including diagonal). Cells where
- * j > i are structurally zero — recursive-model constraint, Hayes (2018) p. 614.
+ * j > i are structurally zero — recursive-model constraint, Hayes (2022) p. 614.
  */
 export function isEditableCell(row: number, col: number): boolean {
   return col <= row
@@ -39,7 +39,7 @@ export function isEditableCell(row: number, col: number): boolean {
 
 /**
  * Serialize a matrix to the comma-separated PROCESS string format described in
- * Hayes (2018) pp. 615-617: read left-to-right, top-to-bottom, skipping the
+ * Hayes (2022) pp. 615-617: read left-to-right, top-to-bottom, skipping the
  * upper triangle. With k mediators the result has 0.5*(k+1)*(k+2) entries.
  */
 export function serialize(matrix: Matrix): string {
@@ -129,7 +129,7 @@ export function resizeMatrices(
 }
 
 /* ------------------------------------------------------------------------
- * C matrix (rectangular, covariates) — Hayes (2018) pp. 630-632
+ * C matrix (rectangular, covariates) — Hayes (2022) pp. 630-632
  * ----------------------------------------------------------------------- */
 
 /** Default C matrix: every covariate enters every consequent equation. */

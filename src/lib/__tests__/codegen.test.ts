@@ -77,7 +77,7 @@ describe('codegen — SPSS', () => {
   })
 })
 
-describe('codegen — Appendix A options (Hayes 2018 pp. 553-554)', () => {
+describe('codegen — Appendix A options (Hayes 2022 pp. 553-554)', () => {
   it('emits every option in the canonical syntax order', () => {
     const cmd = generateSPSS(
       load('fig-b3', {

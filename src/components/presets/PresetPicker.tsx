@@ -11,7 +11,7 @@ export function PresetPicker() {
       <CardHeader>
         <CardTitle>Preset models</CardTitle>
         <CardDescription>
-          Load a canonical example from Hayes (2018), Appendix B.
+          Load a canonical example from Hayes (2022), Appendix B.
         </CardDescription>
       </CardHeader>
       <CardContent>

@@ -3,7 +3,7 @@ import { useModelStore } from '@/store/modelStore'
 import { cn } from '@/lib/utils'
 
 /**
- * Rectangular C-matrix grid (Hayes 2018 pp. 630-632).
+ * Rectangular C-matrix grid (Hayes 2022 pp. 630-632).
  *
  * Rows = consequent variables (M₁…Mₖ, Y).
  * Columns = covariates declared in `variables.covariates`.

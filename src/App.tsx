@@ -16,7 +16,7 @@ function App() {
           <Header />
           {/* Editorial hero — sets the tone before the working surfaces */}
           <section className="mx-auto max-w-7xl px-6 pb-2 pt-10">
-            <p className="kicker mb-3">Vol. 2 · Appendix B · Hayes 2018</p>
+            <p className="kicker mb-3">Vol. 2 · Appendix B · Hayes 2022</p>
             <h2
               className="max-w-[18ch] font-serif text-[2rem] leading-[1.05] tracking-[-0.02em] text-[var(--color-fg)] sm:max-w-[22ch] sm:text-[2.75rem] lg:max-w-[28ch] lg:text-[3.25rem]"
               style={{ fontVariationSettings: '"opsz" 144, "SOFT" 30, "WONK" 0' }}
@@ -33,7 +33,7 @@ function App() {
             <p className="mt-4 max-w-[58ch] text-[0.95rem] leading-relaxed text-[var(--color-muted-fg)]">
               A typographic workbench for editing B / W / Z / WZ matrices, splicing
               numbered templates, attaching covariates, and exporting the exact PROCESS
-              command — SPSS, SAS, or R — verified against Hayes (2018) Appendices A &amp; B.
+              command — SPSS, SAS, or R — verified against Hayes (2022) Appendices A &amp; B.
             </p>
             <div className="rule-accent mt-8" />
           </section>
@@ -57,11 +57,11 @@ function App() {
             <div className="rule-accent mb-5" />
             <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
               <p className="max-w-[60ch] text-[0.72rem] leading-relaxed text-[var(--color-muted-fg)]">
-                Built against Hayes (2018){' '}
+                Built against Hayes (2022){' '}
                 <span className="display-italic">
                   Introduction to Mediation, Moderation, and Conditional Process Analysis
                 </span>
-                , 2nd ed., Appendices A &amp; B. The PROCESS macro is the work of Andrew F. Hayes.
+                , 3rd ed., Appendices A &amp; B. The PROCESS macro is the work of Andrew F. Hayes.
               </p>
               <div className="flex flex-col gap-1 text-[0.72rem] text-[var(--color-muted-fg)] sm:items-end">
                 <p className="kicker !text-[0.6rem]">Analysis &amp; Contact</p>

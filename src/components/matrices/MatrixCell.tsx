@@ -90,7 +90,7 @@ export function MatrixCell({
         <Tooltip>
           <TooltipTrigger asChild>{cell}</TooltipTrigger>
           <TooltipContent>
-            Locked by WZ. PROCESS forces W and Z to 1 wherever WZ is 1 (Hayes 2018, p. 624).
+            Locked by WZ. PROCESS forces W and Z to 1 wherever WZ is 1 (Hayes 2022, p. 624).
           </TooltipContent>
         </Tooltip>
       </td>

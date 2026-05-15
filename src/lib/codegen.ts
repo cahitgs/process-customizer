@@ -12,7 +12,7 @@ interface BuildContext {
   hasZ: boolean
   hasWZ: boolean
   hasCov: boolean
-  /** PROCESS model number when emitting `/model=N` form (Hayes 2018 p. 625). */
+  /** PROCESS model number when emitting `/model=N` form (Hayes 2022 p. 625). */
   modelNumber: number | null
   showMatrices: boolean
   options: ProcessOptions
@@ -23,7 +23,7 @@ interface BuildContext {
  * options. Only options the user has changed from the PROCESS default are
  * included, so the generated command stays minimal.
  *
- * Option list and defaults verified against Hayes (2018), Appendix A,
+ * Option list and defaults verified against Hayes (2022), Appendix A,
  * pp. 553-554.
  */
 function optionFragments(o: ProcessOptions): string[] {
@@ -56,7 +56,7 @@ function optionFragments(o: ProcessOptions): string[] {
 }
 
 function buildContext(model: ModelState): BuildContext {
-  // S-4: enforce WZ ⇒ W,Z before generating code (Hayes 2018 p. 624)
+  // S-4: enforce WZ ⇒ W,Z before generating code (Hayes 2022 p. 624)
   const { w, z } = propagateWZ(model.matrices.w, model.matrices.z, model.matrices.wz)
   const hasWZ = hasAnyOne(model.matrices.wz)
   const hasW = hasAnyOne(w) || hasWZ
@@ -80,11 +80,11 @@ function buildContext(model: ModelState): BuildContext {
 }
 
 /**
- * SPSS command. Format follows Hayes (2018) Appendix B verbatim. Two modes:
+ * SPSS command. Format follows Hayes (2022) Appendix B verbatim. Two modes:
  *
  *   - Custom (modelNumber = null): emits `/bmatrix=...` plus any W/Z/WZ.
  *   - Numbered (modelNumber set):  emits `/model=N` plus only the matrices
- *     the user has edited on top of that model. (Hayes 2018 pp. 625-630.)
+ *     the user has edited on top of that model. (Hayes 2022 pp. 625-630.)
  *
  * Covariates and the `matrices=1` debug flag are emitted when configured.
  */
@@ -117,7 +117,7 @@ export function generateSPSS(model: ModelState): string {
 }
 
 /**
- * SAS — entries inside each matrix are space-separated (Hayes 2018 p. 618);
+ * SAS — entries inside each matrix are space-separated (Hayes 2022 p. 618);
  * options are still comma-separated. The `decimals` argument also drops
  * the "F" prefix in SAS (p. 582).
  */
@@ -147,7 +147,7 @@ export function generateSAS(model: ModelState): string {
   if (ctx.hasCov) parts.push(`cmatrix=${spaceify(serializeRect(ctx.c))}`)
   if (ctx.showMatrices) parts.push(`matrices=1`)
   for (const frag of optionFragments(ctx.options)) {
-    // SAS drops the F prefix in `decimals=F10.4` (Hayes 2018 p. 582).
+    // SAS drops the F prefix in `decimals=F10.4` (Hayes 2022 p. 582).
     parts.push(frag.replace(/^decimals=F/, 'decimals='))
   }
 

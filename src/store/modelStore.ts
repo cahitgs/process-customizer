@@ -91,7 +91,7 @@ export const useModelStore = create<ModelStore>()(
 
       setMediators: (mediators) =>
         set((state) => {
-          const capped = mediators.slice(0, 6) // Hayes (2018) p. 618: max 6
+          const capped = mediators.slice(0, 6) // Hayes (2022) p. 618: max 6
           const matrices = resizeMatrices(state.matrices, capped.length)
           const cMatrix = resizeCMatrix(
             state.cMatrix,
@@ -133,7 +133,7 @@ export const useModelStore = create<ModelStore>()(
           matrices.z = z
 
           // Editing B drops the numbered-model link; numbered models have a
-          // fixed B per Hayes 2018 p. 626 ("All but the B matrix can be
+          // fixed B per Hayes 2022 p. 626 ("All but the B matrix can be
           // reprogrammed when editing a model").
           const nextModelNumber = matrix === 'b' ? null : state.modelNumber
 

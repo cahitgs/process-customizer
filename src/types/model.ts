@@ -1,7 +1,7 @@
 /**
  * Domain types for the PROCESS Matrix Customizer.
  *
- * The B / W / Z / WZ matrices follow Hayes (2018), Appendix B:
+ * The B / W / Z / WZ matrices follow Hayes (2022), Appendix B:
  *   - shape: (k + 1) × (k + 1) where k = number of mediators
  *   - columns are antecedents in order: X, M1, M2, …, Mk
  *   - rows are consequents in order:    M1, M2, …, Mk, Y
@@ -22,7 +22,7 @@ export interface Variables {
   mediators: string[]
   w: string
   z: string
-  /** Covariates (Hayes 2018 p. 630-632). Each consequent equation can include
+  /** Covariates (Hayes 2022 p. 630-632). Each consequent equation can include
    *  any subset of these via the C matrix. Empty = no covariates. */
   covariates: string[]
 }
@@ -36,10 +36,10 @@ export interface ModelState {
   cMatrix: Matrix
   /** When set to a known PROCESS numbered model and the user has only edited
    *  W / Z / WZ, codegen will emit `/model=N` plus the override matrices
-   *  instead of `/bmatrix=...` (Hayes 2018 pp. 625-630). */
+   *  instead of `/bmatrix=...` (Hayes 2022 pp. 625-630). */
   modelNumber: number | null
   /** Emit `/matrices=1` so PROCESS prints the B/W/Z/WZ matrices in its output
-   *  (Hayes 2018 p. 626). */
+   *  (Hayes 2022 p. 626). */
   showMatrices: boolean
   /** Standard PROCESS analysis options. `null` means "don't emit; use PROCESS
    *  default". */
@@ -47,7 +47,7 @@ export interface ModelState {
 }
 
 /**
- * PROCESS macro options as documented in Hayes (2018), Appendix A
+ * PROCESS macro options as documented in Hayes (2022), Appendix A
  * (pp. 551-583). The defaults match PROCESS's own defaults, so the codegen
  * only emits the option when the user has overridden it (`null` ⇒ use default).
  *
@@ -158,12 +158,12 @@ export interface Preset {
   id: string
   label: string
   description: string
-  /** Page reference into Hayes (2018) for traceability. */
+  /** Page reference into Hayes (2022) for traceability. */
   reference: string
   variables: Variables
   matrices: Record<MatrixKind, Matrix>
   /** Numbered PROCESS model this preset corresponds to, if any. Lets the
    *  codegen emit `/model=N` instead of `/bmatrix=...` while still allowing
-   *  W/Z/WZ overrides on top (Hayes 2018 pp. 625-630). */
+   *  W/Z/WZ overrides on top (Hayes 2022 pp. 625-630). */
   modelNumber?: number
 }
