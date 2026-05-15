@@ -1,8 +1,22 @@
-import { useMemo } from 'react'
+import { useEffect, useState } from 'react'
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card'
 import { Input } from '@/components/ui/input'
 import { Label } from '@/components/ui/label'
 import { useModelStore } from '@/store/modelStore'
+
+/** Split a comma-separated string into a clean list of variable names. */
+function parseList(raw: string): string[] {
+  return raw
+    .split(',')
+    .map((s) => s.trim())
+    .filter(Boolean)
+}
+
+function arraysEqual(a: string[], b: string[]): boolean {
+  if (a.length !== b.length) return false
+  for (let i = 0; i < a.length; i++) if (a[i] !== b[i]) return false
+  return true
+}
 
 export function VariablesPanel() {
   const variables = useModelStore((s) => s.variables)
@@ -10,8 +24,32 @@ export function VariablesPanel() {
   const setMediators = useModelStore((s) => s.setMediators)
   const setCovariates = useModelStore((s) => s.setCovariates)
 
-  const mediatorString = useMemo(() => variables.mediators.join(', '), [variables.mediators])
-  const covariateString = useMemo(() => variables.covariates.join(', '), [variables.covariates])
+  // The mediators / covariates inputs need a local raw-text state because the
+  // store holds a parsed `string[]`. A purely derived `value={names.join(', ')}`
+  // input would strip any trailing comma the user just typed (the empty token
+  // gets filtered, then the input snaps back), making it impossible to add a
+  // second variable from the keyboard. Reported by A. F. Hayes (May 2026).
+  const [mediatorRaw, setMediatorRaw] = useState(() => variables.mediators.join(', '))
+  const [covariateRaw, setCovariateRaw] = useState(() => variables.covariates.join(', '))
+
+  // When the store changes from somewhere else (preset load, "Reset to default",
+  // persisted-state rehydration), re-derive the raw text. We only overwrite
+  // when the parsed form of the current raw text would no longer represent the
+  // store — that way the user's in-progress comma/whitespace isn't snapped away
+  // by their own keystrokes round-tripping through Zustand.
+  useEffect(() => {
+    if (!arraysEqual(parseList(mediatorRaw), variables.mediators)) {
+      setMediatorRaw(variables.mediators.join(', '))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [variables.mediators])
+
+  useEffect(() => {
+    if (!arraysEqual(parseList(covariateRaw), variables.covariates)) {
+      setCovariateRaw(variables.covariates.join(', '))
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [variables.covariates])
 
   return (
     <Card>
@@ -19,7 +57,7 @@ export function VariablesPanel() {
         <CardTitle>Variables</CardTitle>
         <CardDescription>
           X is the predictor, Y the outcome, M₁…Mₖ mediators. W and Z are optional moderators.
-          Covariates enter consequent equations per the C matrix (Hayes 2018 pp. 630-632).
+          Covariates enter consequent equations per the C matrix (Hayes 2022 pp. 630-632).
         </CardDescription>
       </CardHeader>
       <CardContent className="grid gap-4">
@@ -43,15 +81,14 @@ export function VariablesPanel() {
           </Label>
           <Input
             id="mediators"
-            value={mediatorString}
-            onChange={(e) =>
-              setMediators(
-                e.target.value
-                  .split(',')
-                  .map((s) => s.trim())
-                  .filter(Boolean),
-              )
-            }
+            value={mediatorRaw}
+            placeholder="wine, tent, sand"
+            onChange={(e) => {
+              const raw = e.target.value
+              setMediatorRaw(raw)
+              setMediators(parseList(raw))
+            }}
+            onBlur={() => setMediatorRaw(variables.mediators.join(', '))}
           />
         </div>
         <div className="grid grid-cols-2 gap-3">
@@ -74,16 +111,14 @@ export function VariablesPanel() {
           </Label>
           <Input
             id="covariates"
-            value={covariateString}
-            placeholder="e.g., age, gender"
-            onChange={(e) =>
-              setCovariates(
-                e.target.value
-                  .split(',')
-                  .map((s) => s.trim())
-                  .filter(Boolean),
-              )
-            }
+            value={covariateRaw}
+            placeholder="age, gender"
+            onChange={(e) => {
+              const raw = e.target.value
+              setCovariateRaw(raw)
+              setCovariates(parseList(raw))
+            }}
+            onBlur={() => setCovariateRaw(variables.covariates.join(', '))}
           />
           <p className="mt-1 text-xs text-[var(--color-muted-fg)]">
             When set, a C-matrix tab appears so you can pick which covariates enter which equation.
