@@ -1,0 +1,28 @@
+cff-version: 1.2.0
+title: "PROCESS Matrix Customizer"
+message: "If you use this software, please cite it as below."
+type: software
+authors:
+  - given-names: "Mehmet Cahit"
+    family-names: "Marangoz"
+    affiliation: "Ankara University"
+    orcid: "https://orcid.org/0000-0003-0850-2251"
+repository-code: "https://github.com/cahitgs/process-customizer"
+url: "https://cahitgs.github.io/process-customizer/"
+abstract: >
+  A browser-based companion for Hayes (2022) Introduction to Mediation,
+  Moderation, and Conditional Process Analysis (3rd ed.). Builds and
+  visualizes custom PROCESS macro models — the B/W/Z/WZ/C matrices
+  described in Appendix B — and exports verbatim SPSS, SAS, or R commands
+  with full Appendix A options. Validated against Hayes (2022),
+  3rd ed. (per A. F. Hayes, pers. comm., 2026).
+keywords:
+  - "PROCESS macro"
+  - "mediation analysis"
+  - "moderation analysis"
+  - "conditional process analysis"
+  - "Hayes"
+  - "statistical software"
+license: MIT
+version: "1.0.0"
+date-released: "2026-05-16"
