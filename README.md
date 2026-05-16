@@ -1,5 +1,10 @@
 # PROCESS Matrix Customizer
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20237514.svg)](https://doi.org/10.5281/zenodo.20237514)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+A modern, browser-based companion for **Hayes (2022)** ...
+
 A modern, browser-based companion for **Hayes (2022)** _Introduction to Mediation, Moderation, and Conditional Process Analysis_ (3rd ed.). Build and visualize custom PROCESS macro models — the **B / W / Z / WZ / C** matrices described in Appendix B — and export the exact SPSS, SAS, or R command verified against Appendices A & B.
 
 ## Features
