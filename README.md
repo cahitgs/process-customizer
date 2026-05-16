@@ -49,9 +49,15 @@ src/
 
 ## Citation
 
-Hayes, A. F. (2022). _Introduction to Mediation, Moderation, and Conditional Process Analysis: A Regression-Based Approach_ (3rd ed.). The Guilford Press.
+## Citation
 
-Page references throughout the source were validated against the 2nd edition (2018); Appendix B in the 3rd edition is substantively identical (per A. F. Hayes, pers. comm., May 2026).
+If you use this tool, please cite both the software and the methodological framework:
+
+> Marangoz, M. C. (2026). *PROCESS Matrix Customizer* (Version 1.0.0) [Computer software]. Zenodo. https://doi.org/10.5281/zenodo.20237514
+
+> Hayes, A. F. (2022). *Introduction to Mediation, Moderation, and Conditional Process Analysis: A Regression-Based Approach* (3rd ed.). The Guilford Press.
+
+Validated against Hayes (2022), 3rd ed., Appendices A & B (per A. F. Hayes, pers. comm., 2026).
 
 ## Contact
 
